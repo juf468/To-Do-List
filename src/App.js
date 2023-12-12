@@ -1,4 +1,5 @@
 import { ToDoInput } from './components/ToDoInput';
+import { ToDoList } from './components/ToDoList';
 import { Title } from './components/title';
 
 function App() {
@@ -7,6 +8,10 @@ function App() {
 			<div className="container flex-col max-w-xl">
 				<Title />
 				<ToDoInput />
+				<ToDoList>
+					{/*si uitilizo prop con PALABRA REESERVADA CHILDREN podemos ==> */}
+					<h2>info que ira al todolist</h2>
+				</ToDoList>
 			</div>
 		</div>
 	);
