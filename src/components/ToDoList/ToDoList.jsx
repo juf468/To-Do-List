@@ -1,10 +1,13 @@
+import { ToDo } from '../ToDo/ToDo';
 import { TodoFilters } from '../TodoFilters';
 
-const ToDoList = ({ children }) => {
+const ToDoList = ({ todos }) => {
 	//sera un componente contenedor de otro componente x props
 	return (
 		<div className="flex flex-col mt-7 rounded-lg overflow-hidden shadow-2xl">
-			{children}
+			{todos.map((todo) => (
+				<ToDo key={todo.id} todo={todo} />
+			))}
 			<TodoFilters />
 		</div>
 	);
