@@ -8,15 +8,15 @@ function App() {
 		{
 			id: 1,
 			title: 'ejemplo 1',
-			complete: false,
+			completed: false,
 		},
-		{ id: 2, title: 'ejemplo 2', complete: false },
+		{ id: 2, title: 'ejemplo 2', completed: false },
 		{
 			id: 3,
 			title: 'ejemplo 3',
-			complete: false,
+			completed: false,
 		},
-		{ id: 4, title: 'ejemplo 4', complete: false },
+		{ id: 4, title: 'ejemplo 4', completed: false },
 	]);
 
 	const addTodo = (title) => {
@@ -32,13 +32,30 @@ function App() {
 		ToDoList.push(newTodo);
 		setTodos(ToDoList);
 	};
+	const handleSetComplete = (id) => {
+		const updatedList = todos.map((todo) => {
+			if (todo.id === id) {
+				return { ...todo, completed: !todo.completed };
+			}
+			return todo;
+		});
+		setTodos(updatedList);
+	};
 
+	const handleDelete = (id) => {
+		const updatedList = todos.filter((todo) => todo.id !== id);
+		setTodos(updatedList);
+	};
 	return (
 		<div className="bg-gray-800 min-h-screen h-full font-inter text-gray-300 flex items-center justify-center py-20 px-5">
 			<div className="container flex-col max-w-xl">
 				<Title />
 				<ToDoInput addTodo={addTodo} />
-				<ToDoList todos={todos} />
+				<ToDoList
+					todos={todos}
+					handleSetComplete={handleSetComplete}
+					handleDelete={handleDelete}
+				/>
 			</div>
 		</div>
 	);
