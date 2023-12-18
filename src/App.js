@@ -18,11 +18,26 @@ function App() {
 		},
 		{ id: 4, title: 'ejemplo 4', complete: false },
 	]);
+
+	const addTodo = (title) => {
+		const lastId = todos.length > 0 ? todos[todos.length - 1].id : 1;
+
+		const newTodo = {
+			id: lastId + 1,
+			title,
+			completed: false,
+		};
+
+		const ToDoList = [...todos];
+		ToDoList.push(newTodo);
+		setTodos(ToDoList);
+	};
+
 	return (
 		<div className="bg-gray-800 min-h-screen h-full font-inter text-gray-300 flex items-center justify-center py-20 px-5">
 			<div className="container flex-col max-w-xl">
 				<Title />
-				<ToDoInput />
+				<ToDoInput addTodo={addTodo} />
 				<ToDoList todos={todos} />
 			</div>
 		</div>

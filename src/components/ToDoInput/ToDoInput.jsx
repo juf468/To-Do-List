@@ -1,4 +1,16 @@
-const ToDoInput = () => {
+import { useState } from 'react';
+
+const ToDoInput = ({ addTodo }) => {
+	const [title, setTitle] = useState('');
+
+	const handleTodo = (event) => {
+		if (event.key.toLowerCase() === 'enter') {
+			addTodo(title);
+			setTitle('');
+		}
+	};
+
+	console.log('mititle', title);
 	return (
 		<div className="mt-6 relative">
 			<div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
@@ -10,6 +22,9 @@ const ToDoInput = () => {
 				type="text"
 				className=" focus:shadow-lg font-inter focus:shadow-blue-600 pl-12 w-full py-4 bg-gray-700 rounded-xl outline-none transition-all duration-300 ease-in-out"
 				placeholder="what's next... "
+				value={title}
+				onChange={(event) => setTitle(event.target.value)}
+				onKeyDown={(event) => handleTodo(event)}
 			/>
 		</div>
 	);
