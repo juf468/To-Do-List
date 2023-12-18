@@ -6,7 +6,7 @@ const FilterContainer = ({ children }) => {
 	);
 };
 
-const ItemsLeft = ({ total = 0 }) => {
+const ItemsLeft = ({ total }) => {
 	return <p className="text-gray-400 text-sm">{total} items left</p>;
 };
 

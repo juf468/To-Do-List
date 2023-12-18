@@ -15,7 +15,7 @@ const TodoFilters = ({
 }) => {
 	return (
 		<FilterContainer>
-			<ItemsLeft total={total} />
+			{/* <ItemsLeft total={total} /> */}
 			<FilterButtonContainer>
 				<FilterButton
 					action={() => showAllTodos()}
